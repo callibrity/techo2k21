@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubert
+  labels:
+    app: kubert
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubert
+  template:
+    metadata:
+      labels:
+        app: kubert
+    spec:
+      containers:
+        - name: web
+          image: callibrity/kubert:1.0.3
+          ports:
+            - name: web
+              containerPort: 8080
+              protocol: TCP
